@@ -1,0 +1,18 @@
+== Pre Launch Keycloak
+
+Before launching keycloak lets configure http and https related configuration:
+
+  - HTTPS Scheme: if keycloak is deployed over HTTPS scheme then continue using.
+
+  - HTTP Scheme: If keycloak is deployed over HTTP scheme then do these extra steps in place
+
+[source,bash]
+----
+  Kubectl -n ${namespace} exec -it `kubectl -n ${namespace}  get pods -l app.kubernetes.io/name=keycloak -o jsonpath="{.items[0].metadata.name}"` bash
+
+  cd /opt/keycloak/bin
+
+  ./kcadm.sh config credentials --server http://localhost:8080/ --realm master --user ${KEYCLOAK_ADMIN} --password ${KEYCLOAK_ADMIN_PASSWORD} --config /tmp/kcadm.config
+  
+  ./kcadm.sh update realms/master -s sslRequired=NONE --config /tmp/kcadm.config
+----

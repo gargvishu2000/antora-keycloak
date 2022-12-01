@@ -1,0 +1,9 @@
+== Uninstallation
+
+This step will remove all the objects previously created and the deployments previously created.
+No data is removed (besides caches and transient data) during these steps.
+
+[source,bash]
+----
+helm uninstall keycloak -n ${namespace}
+----

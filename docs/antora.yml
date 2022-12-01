@@ -1,5 +1,6 @@
 name: antora1
 title: Antora1
 version: ~
+start_page: introduction.adoc
 nav:
-- docs/modules/ROOT/pages/index.adoc
+- docs/modules/ROOT/pages/introduction.adoc

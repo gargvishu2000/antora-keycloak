@@ -1,0 +1,28 @@
+== Introduction
+
+This document outlines the installation of Keycloak SSO and integration alongwith AIP.
+
+=== Naming Conventions
+
+In this document the following naming conventions will be established.
+
+|===
+
+|Variable | Meaning/mapping
+|${KEYCLOAK_CHART_PATH} | The local keycloak helm chart package path
+|${namespace} | The kubernetes namespace where to deploy all the elements of the installation
+|${registry_url} | The keycloak image registry url
+|${keycloak_repository} | the keycloak docker image name
+|${tag} | the keycloak docker image tag name
+|${kc_user} | The keycloak admin user's username
+|${kc_password} | The keycloak admin user's password
+|${db_user} | The postgres database user name
+|${db_password} | The postgres database user's password
+|${db_name} | The postgres database name
+|${db_url} | The postgrws database db url example= jdbc:postgresql://postgresql.default.svc.cluster.local:5432/${db_name}
+|${UPGRADE_CHART_VERSION} | The chart version to be used when upgrading the deployment
+|${UPGRADE_IMAGE_REG} | The new image registry to be used when upgrading the deployment
+|${UPGRADE_IMAGE_REPO} | The new image repository to be used when upgrading the deployment
+|${UPGRADE_IMAGE_TAG} | The new image tag to be used when upgrading the deployment
+
+|===

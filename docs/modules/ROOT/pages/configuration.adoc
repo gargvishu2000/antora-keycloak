@@ -1,0 +1,202 @@
+== Configuration
+
+=== Create client (protocol: openid-connect)
+
+Open keycloak web ui and click on Administration console Then login with keycloak admin user then got to manage > clients > create a client with below information.
+
+General Settings
+
+[cols="1,1"]
+|===
+| Client Protocol | "openid-connect"
+| Cliend Id |  raid_portal
+| Name |  raid_portal
+| Description | ""
+|===
+
+click on next and then save . Now you will see more setting to configure follow below sections to set these settings .  
+
+Access settings
+
+[cols="1,1"]
+|===
+| Root URL | ${PORTAL_URL}
+| Valid Redirect URIs |  ${PORTAL_URL}/*
+| Admin URL |  ${PORTAL_URL}
+| Web Origins | ${PORTAL_URL}
+|===
+
+Login settings
+
+[cols="1,1"]
+|===
+| Login theme | Mobileum
+|===
+
+and save again.
+
+=== Add Mappers
+
+Edit created client > Client Scopes > click ${Cliend Id}-dedicated in assigned client scopes > "Mappers" tab and add below 3 mappers.
+
+==== realm roles
+
+1. Click on ""Add predefined mappers"" button and then check on "realm roles" and then click on Add selected.
+2. Edit "realm roles" mapper and check on all toggles and update "Token Claim Name" as "roles" and save.
+
+==== client roles
+
+click on "Add predefined mappers" button and then check on "client roles" and then click on Add selected.
+
+==== group
+
+Click on Add Mapper > By Configuration > then select "Group Membership" to create a new mapper. and set following values and toggle all button to true and then save.
+
+[cols="1,1"]
+|===
+| Mapper Type | Group Membership
+| Protocol | openid-connect
+| Name | group
+| Token Claim Name | group
+|===
+
+=== Add Role
+
+Go to Manage > Realm Roles and click on "Create Role" button and then fill the form with new role Name eg. admin and fill the description and save the form.
+verify new roles admin is created and present in all roles list.
+
+=== Add Group
+
+Go to Manage > Groups and click on "Create Group" button and then fill the form with new group Name eg. admin then save the form.
+verify admin group is created and present in all groups list.
+
+=== Add Users
+
+we can add custom users one by one and we can integrate a lightweight active directory or any user federation like ldap to manage users and associated groups and roles in keycloak.
+we will see how to do that in next sections.
+
+==== Create custom users
+
+Go to Manage > Users and click on "Add user" button and then fill the form.
+example of adding adm user with following details and save
+
+===== Create user
+
+[cols="1,1"]
+|===
+| Username | adm
+| Email | adm@mobileum.com
+| Email Verified | on
+| First Name | Admin
+| Last Name | mobileum
+|===
+
+click save 
+
+===== set Password
+
+Edit the user and set password in credentials tab.
+
+===== Map roles
+
+Edit the user and Go to Role Mappings tab and click on "Assign Role" button and then select a particular role present in Available roles list and then click on "Assign" button to assign that particular role.
+
+  Example: map admin role created above to this user
+
+===== Map groups
+
+Edit the user Go to Groups tab and click on "Join Group" select a particular group present in Available Groups list and then click on Join button to join that particular Group.
+
+  Example: map admin group created above to this user
+
+==== Integrate user federation (ldap)
+
+Go to Configure > User federation > Add Ldap Providers .see ldap configuration page is opened with heading "Add user federation provider heading".
+
+===== Configure ldap base configuration
+
+Note: Set following items as per requirement.
+
+General options
+
+[cols="1,1"]
+|===
+| Console display name | ldap
+| Vendor | ActiveDirectory or select based on preferred type
+|===
+
+Connection and authentication settings
+
+[cols="1,1"]
+|===
+| Connection URL  | ldap://<LDAP DNS>:389
+| Bind Type  | simple
+| Bind DN  | set bind dn
+| Bind Credential  | set bind dns password
+|===
+
+LDAP searching and updating
+
+[cols="1,1"]
+|===
+| Edit Mode | READ_ONLY
+| Users DN  | set to user dn attribute
+| Username LDAP attribute | sAMAccountName or chnage as per the ldap attribute
+| RDN LDAP attribute  | sAMAccountName or chnage as per the ldap attribute
+| UUID LDAP attribute  | objectGUID
+| User Object Classes  | person, organizationalPerson, user
+| User LDAP Filter  | set user ldap filter
+| Search Scope  | Subtree
+| Read timeout |
+| Pagination | 
+|===
+
+
+Synchronization settings
+
+[cols="1,1"]
+|===
+| Import users | On
+| Sync Registrations | On
+| Batch size |
+| Periodic full sync |
+| Periodic changed users sync  |
+|===
+
+leave rest as it is and then click on save 
+
+once ldap federation account created then click on "Synchronize all users" button which is enabled after saving the ldap form.
+
+===== Configure groups related configuration
+
+Go to Configure > User federation > ldap > Mappers tab and click on create button to create a new mapper with following details and then save.
+
+[cols="1,1"]
+|===
+| Name | AD-GROUPS
+| Mapper-Type | select "group-ldap-mapper" from dropdown
+|===
+
+see more options listed now fill this new options.
+
+[cols="1,1"]
+|===
+| LDAP Groups DN  | set group dn attribute based on ldap provider
+| Group Name LDAP Attribute  | cn
+| Group Object Classes  | group
+| Preserve Group Inheritance  | on
+| Ignore Missing Groups  | OFF
+| Membership LDAP Attribute  | member
+| Membership Attribute Type  | DN
+| Membership User LDAP Attribute  | set sAMAccountName or set baased on ldap provider
+| LDAP Filter  | set filter based on attribute provider
+| Mode  | READ_ONLY
+| User Groups Retrieve Strategy  | LOAD_GROUPS_BY_MEMBER_ATTRIBUTE
+| Member-Of LDAP Attribute  | memberOf
+| Mapped Group Attributes  | keep as blank
+| Drop non-existing groups during sync  | OFF
+| Groups Path  | "/"
+|===
+
+
+once mapper created click on "Sync LDAP Groups to Keycloak" button which is enabled after saving the mapper form.

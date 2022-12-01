@@ -1,0 +1,26 @@
+== Values
+
+=== Values Table
+
+[cols="1,1,1,1,1",header=true]
+|===
+| Key | Type | Default | Sample | Description
+| rbac.enabled |  string | "yes"  |   `no`  | Keycloak specific cluster roles and bindings creation flag .
+| config.replica_count |  int | 3 |   `3`  | keycloak pods count
+| config.is_cache_enable |  string | true |   `true`  | Boolean to check if keycloak is cachable
+| config.keycloak_user |  string | admin |   `admin`   | keycloak's admin user's username
+| config.keycloak_password |  string |  |   `Pa55w0rd`  | keycloak's admin user's password
+| config.resources.limits.memory |  string | 4098Mi  |   `4098Mi`  | Highest ram resources limit in MB
+| config.resources.limits.cpu |  string | "2"  |   `2`  | Highest cpu resources count in number of cores
+| config.resources.requests.memory |  string | 2048Mi |   `2048Mi`  | Allocated ram resource to keycloak pods
+| config.resources.requests.cpu |  string | "1" |   `1`  | Allocated cpu count to keycloak pods
+| db.database_vendor |  string | dev-mem |   `postgres`  | Supported Database vender i.e. postgres
+| db.database_url | string | | 'jdbc::postgresql://postgresql.default.svc.cluster.local:5432/postgres' | complete postgres db url for db connectivity
+| db.databaseName |  string | postgres |   `postgres`  |  Database name
+| db.db_username |  string | keycloak |   `keycloak`  | Database username
+| db.db_password |  string | Password1  |   `Password1`  | Database Password
+| image.repository |  string | 162015117822.dkr.ecr.eu-west-1.amazonaws.com/aip/keycloak |   162015117822.dkr.ecr.eu-west-1.amazonaws.com/aip/keycloak |  Keycloak image name like  registry-url/repositoryname
+| image.tag |  string | latest  | latest  | keycloak docker image name
+| image.pullPolicy |  string | Always  |   Always  | Keycloak docker image pull policy
+| service.type |  string | "ClusterIP" |   ClusterIP  | Supported service type are ClusterIP,NodePort and LoadBalancer
+|===

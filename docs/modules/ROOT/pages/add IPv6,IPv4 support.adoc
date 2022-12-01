@@ -1,0 +1,22 @@
+
+== Add IPv6/IPv4 support
+
+To add IPv6 support in java options we need to modigy JAVA_OPTS environment variable.
+
+Add the custom JAVA_OPTS into your file settings:
+
+[source,bash]
+----
+  --set buildEnvs.JAVA_OPTS: "-XX:InitialRAMPercentage=25.0 -XX:MaxRAMPercentage=90.0 -Djava.net.preferIPv4Stack=false -Djava.net.preferIPv6Addresses=true"
+----
+
+or vice versa
+
+To add IPv4 support in java options we need to modigy JAVA_OPTS environment variable.
+
+Add the custom JAVA_OPTS into your file settings:
+
+[source,bash]
+----
+  --set buildEnvs.JAVA_OPTS: "-XX:InitialRAMPercentage=25.0 -XX:MaxRAMPercentage=90.0 -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv6Addresses=false"
+----
