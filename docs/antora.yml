@@ -1,2 +1,5 @@
 name: antora1
+title: ANTORA1
 version: ~
+nav:
+- modules/ROOT/nav.adoc
