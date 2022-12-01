@@ -3,4 +3,5 @@ title: Antora1
 version: 1.2
 start_page: introduction.adoc
 nav:
-- docs/modules/ROOT/pages/introduction.adoc
+- docs/modules/ROOT/nav.adoc
+
