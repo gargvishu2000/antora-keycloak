@@ -1,13 +1,11 @@
-* xref:introduction.adoc[]
-* xref:dependencies.adoc[]
-* xref:add IPv6,IPv4 support.adoc[]
-* xref:add TLS certificate.adoc[]
-* xref:add client,roles,groups and users.adoc[]
-* xref:installation.adoc[]
-* xref:upgrade.adoc[]
-* xref:pre-launch keycloak.adoc[]
-* xref:launch keycloak.adoc[]
-* xref:configuration.adoc[]
-* xref:integration with raid.adoc[]
-* xref:uninstall.adoc[]
-* xref:values.adoc[]
+xref:_@docs:module:ROOT-introduction.adoc[]
+xref:_@docs:module:ROOT-dependencies.adoc[]
+xref:_@docs:module:ROOT-installation.adoc[]
+xref:_@docs:module:ROOT-launch keycloak.adoc[]
+xref:_@docs:module:ROOT-values.adoc[] 
+
+
+
+
+
+
