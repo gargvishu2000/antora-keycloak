@@ -1,9 +1,4 @@
-xref:_@docs:module:ROOT-introduction.adoc[]
-xref:_@docs:module:ROOT-dependencies.adoc[]
-xref:_@docs:module:ROOT-installation.adoc[]
-xref:_@docs:module:ROOT-launch keycloak.adoc[]
-xref:_@docs:module:ROOT-values.adoc[] 
-
+* xref: index.adoc
 
 
 

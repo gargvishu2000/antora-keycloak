@@ -1,8 +1,0 @@
-== Dependencies
-
-Prior to the installation of this component please ensure you have:
-
-* **PostgreSQL**
-
-IMPORTANT: Please provide a valida schema/user prior to this installation
-
