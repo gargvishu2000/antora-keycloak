@@ -1,12 +1,7 @@
 name: antora1
 title: Antora1
-version: 1.2
+version: '1.0'
 start_page: introduction.adoc
-asciidoc:
-  attributes:
-    source-language: asciidoc@
-    table-caption: false
-
 nav:
-- docs/modules/ROOT/nav.adoc
+- modules/ROOT/nav.adoc
 
